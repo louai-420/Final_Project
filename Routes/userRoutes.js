@@ -1,4 +1,4 @@
-// backend/routes/userRoutes.js
+
 const express = require("express");
 const userController = require("../Controllers/userController");
 const { authMiddleware, isAdmin } = require("../middleware/authMiddleware");
