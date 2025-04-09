@@ -20,7 +20,7 @@ exports.createUser = async (req, res) => {
       username,
       email,
       password,
-      address, // Note : Tu devras hasher le mot de passe avant de l'enregistrer (voir plus bas)
+      address, 
     });
 
     await newUser.save(); // Enregistre l'utilisateur dans la base de données
@@ -70,8 +70,7 @@ exports.loginUser = async (req, res) => {
 exports.getUserProfile = async (req, res) => {
   try {
     // Récupère l'ID de l'utilisateur à partir du token JWT
-    const userId = req.user.userId; // Supposons que tu as déjà un middleware pour extraire l'ID de l'utilisateur
-
+    const userId = req.user.userId; 
     // Récupère les informations de l'utilisateur
     const user = await User.findById(userId);
     if (!user) {
@@ -99,7 +98,7 @@ exports.updateUserProfile = async (req, res) => {
 
     // Met à jour les informations
     if (email) user.email = email;
-    if (password) user.password = password; // Attention : en production, il faut hacher le mot de passe
+    if (password) user.password = password; 
     if (address) user.address = address;
 
     // Sauvegarde les modifications
@@ -115,8 +114,7 @@ exports.updateUserProfile = async (req, res) => {
 
 exports.logoutUser = async (req, res) => {
   try {
-    // Ici, vous pouvez ajouter une logique pour invalider le token si nécessaire
-    // Par exemple, stocker le token dans une liste noire (blacklist)
+    
 
     // Réponse réussie
     res.status(200).json({ message: "Logout successful" });
